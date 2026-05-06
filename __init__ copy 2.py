@@ -9,8 +9,8 @@ class visualizzare_scacchiera:
     def __init__(self,p1,p2):
         self.size = 9
 
-        # struttura del giocatore 
-        # cambiero questo struttura con la classe 
+       #ho spostato la funzione che genera la mappa nel costruttore , e ho affidato il duo ipotetico valore ad una matrice 
+       #che ha valore interno alla classe 
 
 
         """ implemtentata la classe del pedone , ho messo dentro di essa un
@@ -84,18 +84,25 @@ class visualizzare_scacchiera:
                 y_stimata = pedone.coordinate_y+1
             
             if x_stimata >=0 and x_stimata < self.size and y_stimata >=0 and y_stimata < self.size:
-                
+
                 if self.matrice[x_stimata][y_stimata] != ".":
-                    self.matrice[x_stimata+(x_stimata-pedone.coordinate_x)][y_stimata+(y_stimata-pedone.coordinate_y)] = pedone.icona_personaggio
-                    self.matrice[pedone.coordinate_x][pedone.coordinate_y] = "."
-                    pedone.sposta(x_stimata+(x_stimata-pedone.coordinate_x),y_stimata+(y_stimata-pedone.coordinate_y))
-                    self.mossa_eseguita = True
+                    if x_stimata+(x_stimata-pedone.coordinate_x) >=0 and x_stimata+(x_stimata-pedone.coordinate_x) < self.size and y_stimata+(y_stimata-pedone.coordinate_y) >=0 and y_stimata+(y_stimata-pedone.coordinate_y) < self.size and self.matrice[x_stimata+(x_stimata-pedone.coordinate_x)][y_stimata+(y_stimata-pedone.coordinate_y)] == ".":
+                        self.matrice[x_stimata+(x_stimata-pedone.coordinate_x)][y_stimata+(y_stimata-pedone.coordinate_y)] = pedone.icona_personaggio
+                        self.matrice[pedone.coordinate_x][pedone.coordinate_y] = "."
+                        pedone.sposta(x_stimata+(x_stimata-pedone.coordinate_x),y_stimata+(y_stimata-pedone.coordinate_y))
+                        self.mossa_eseguita = True
+                    else:
+                        print("Mossa non valida: c'è un ostacolo o un altro giocatore di fronte a te, e non puoi saltare.")
+                        self.mossa_eseguita = False
+
                 elif self.matrice[x_stimata][y_stimata] == ".":
                     self.matrice[pedone.coordinate_x][pedone.coordinate_y] = "."
                     pedone.sposta(x_stimata, y_stimata )
                     self.matrice[pedone.coordinate_x][pedone.coordinate_y] = pedone.icona_personaggio
                     self.mossa_eseguita = True
-
+            else:
+                print("Mossa non valida: fuori dai limiti della mappa.")
+                self.mossa_eseguita = False
 
         elif scelta == "2":
             print("Hai scelto di inserire un muro.")
