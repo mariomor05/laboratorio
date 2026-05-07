@@ -69,3 +69,5 @@ In fondo alla stanza c'è una cassa di emergenza ancora chiusa solo parzialmente
 Tra gli oggetti inutilizzabili si nota una batteria compatta, pesante ma apparentemente ancora funzionante.
 Una vecchia etichetta dice: "BATTERIA AUSILIARIA - USARE SOLO IN CASO DI AVARIA".
 Gli oggetti presenti sono la batteria, i cavi rotti e gli attrezzi. La batteria è obbligatoria per la sala motori e gli attrezzi possono essere decorativi oppure usati per rendere più realistico l'enigma.
+
+@COPYRIGHT RIGHTS AUTHOR BY MARIOMOR05 
